@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n;
+    do {
+        n = +prompt("nhap so nguyen n");
+    } while (n <= 0 || n > 50 || n === '' || parseInt(n) !== n || isNaN(n));
+    let mangA = [];
+    for (let i = 0; i < n; i++) {
+        mangA[i] = +prompt(`nhap phan tu thu :${i}`);
+        while (mangA[i] === '' || isNaN(mangA[i]) || parseInt(mangA[i]) !== mangA[i]) {
+            mangA[i] = +prompt(`nhap phan tu thu :${i}`);
+        }
+    }
+    alert(mangA);
+    let mangB = [];
+    for (let i = 0; i < mangA.length; i++) {
+        if (mangA[i] < 2) {
+            continue;
+        }
+        let kiemTra = true;
+        for (let j = 2; j < mangA[i]; j++) {
+            if (mangA[i] % j === 0) {
+                kiemTra = false;
+                break;
+            }
+        }
+        if (kiemTra === true) {
+            mangB.push(mangA[i]);
+        }
+    }
+    alert(mangB);
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let phanSoThuNhat = prompt("nhap phan so thu nhat");
+    let phanSoThuHai = prompt("nhap phan so thu hai");
+    while (phanSoThuNhat.split("/").length !== 2) {
+        phanSoThuNhat = prompt("nhap phan so thu nhat");
+    }
+    while (phanSoThuHai.split("/").length !== 2) {
+        phanSoThuHai = prompt("nhap phan so thu nhat");
+    }
+    let mang1 = phanSoThuNhat.split("/");
+    let mang2 = phanSoThuHai.split("/");
+    if (soSanhPhanSo(mang1[0], mang1[1], mang2[0], mang2[1])===true){
+        alert('hai phan so bang nhau');
+    }else {
+        alert('hai phan so khac nhau');
+    }
+        function soSanhPhanSo(tuSo1, mauSo1, tuSo2, mauSo2) {
+            if (tuSo1 * mauSo2 === tuSo2 * mauSo1) {
+                return true;
+            }
+            return false;
+        }
+</script>
+</body>
+</html>

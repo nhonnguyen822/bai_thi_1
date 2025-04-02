@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="table"></p>
+<script>
+    class SoTietKiem {
+        constructor(maSo, loaiTietKiem, hoTenKhachHang, chungMinhNhanDan, ngayMoSo, soTienGui) {
+            this.maSo = maSo;
+            this.loaiTietKiem = loaiTietKiem;
+            this.hoTenKhachHang = hoTenKhachHang;
+            this.chungMinhNhanDan = chungMinhNhanDan;
+            this.ngayMoSo = ngayMoSo;
+            this.soTienGui = soTienGui;
+        }
+    }
+
+    let soTietKiem1 = new SoTietKiem("001", "12A1", "NguyenVanA", "012345671", "12/12/2012 ", 1000000);
+    let soTietKiem2 = new SoTietKiem("002", "12A1", "NguyenVanB", "012345672", "12/12/2013", 1100000);
+    let mangDanhSachSoTietKiem = [];
+    mangDanhSachSoTietKiem.push(soTietKiem1, soTietKiem2);
+    hienThiTable();
+
+    function hienThiTable() {
+        let tableString = `<table border="1">`
+        tableString += `<tr>`
+        tableString += `<th>Ma So</th>`
+        tableString += `<th>Loai Tiet Kiem</th>`
+        tableString += `<th>Ho Va Ten KH</th>`
+        tableString += `<th>CMND</th>`
+        tableString += `<th>Ngay Mo So</th>`
+        tableString += `<th>So Tien Gui</th>`
+        tableString += `</tr>`
+        for (let i = 0; i < mangDanhSachSoTietKiem.length; i++) {
+            tableString += `<tr>`
+            tableString += `<td>${mangDanhSachSoTietKiem[i].maSo}</td>`
+            tableString += `<td>${mangDanhSachSoTietKiem[i].loaiTietKiem}</td>`
+            tableString += `<td>${mangDanhSachSoTietKiem[i].hoTenKhachHang}</td>`
+            tableString += `<td>${mangDanhSachSoTietKiem[i].chungMinhNhanDan}</td>`
+            tableString += `<td>${mangDanhSachSoTietKiem[i].ngayMoSo}</td>`
+            tableString += `<td>${mangDanhSachSoTietKiem[i].soTienGui}</td>`
+            tableString += `<td><button onclick="xoaSoTietKiem(${i})">DELETE</button></td>`
+            tableString += `</tr>`
+        }
+        tableString += `</table>`
+        document.getElementById("table").innerHTML = tableString;
+    }
+
+    function xoaSoTietKiem(index) {
+        let conf = confirm("ban co thuc su muon xoa");
+        if (conf) {
+            mangDanhSachSoTietKiem.splice(index, 1);
+        }
+        hienThiTable();
+    }
+
+
+</script>
+</body>
+</html>
